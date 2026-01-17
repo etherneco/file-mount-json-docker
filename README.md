@@ -1,11 +1,3 @@
-
-All mount intent is described explicitly in a JSON file, which becomes:
-- the documentation
-- the contract
-- the source of truth
-
----
-
 ## Architecture Overview
 - **JSON configuration** – declarative definition of mount rules
 - **Docker container** – isolated and reproducible runtime
