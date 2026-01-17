@@ -1,24 +1,65 @@
-# Docker with  SIMPLE FILE MANAGER
 
+All mount intent is described explicitly in a JSON file, which becomes:
+- the documentation
+- the contract
+- the source of truth
 
-A. Requires:
-- install docker in your machine
-- install docker-compoer
+---
 
+## Architecture Overview
+- **JSON configuration** – declarative definition of mount rules
+- **Docker container** – isolated and reproducible runtime
+- **Entrypoint logic** – validates and applies mounts
+- **Explicit host ↔ container boundary** – no hidden behaviour
 
-B. Installation
+The goal is not to abstract Docker away, but to make mount behaviour transparent and inspectable.
 
-Please go to your project directory and run command from shell:
+---
 
-sudo docker-copmose up
+## Use Cases
+- CI/CD pipelines requiring reproducible file mounts
+- Multi-environment deployments (local, staging, production)
+- Infrastructure documentation and audits
+- Controlled exposure of host files inside containers
 
-Now hit `http://localhost:8000` and you should see page content in your browser. 
-You can even try `http://localhost:8000/?XDEBUG_SESSION_START` and the breakpoint you sent previously should also be hit!
+---
 
-Plaese remember set a permission for local file.
-For example 
-sudo 777 src/public to fast show upload data
+## Tech Stack
+- Docker
+- JSON configuration
+- Shell-based entrypoint logic
 
-Thanks for your attentions
+---
 
+## Design Principles
+- **Declarative over imperative**
+- **Clarity over abstraction**
+- **Single responsibility**
+- **No hidden magic**
+- **Portable by default**
 
+---
+
+## Status
+- Functional prototype
+- Used as an internal infrastructure utility
+- Designed with extensibility in mind
+
+---
+
+## Possible Extensions
+- JSON Schema validation
+- Read-only or policy-based mounts
+- CI/CD pipeline integration
+- Runtime verification and logging
+
+---
+
+## Why This Project Matters
+This repository demonstrates:
+- infrastructure-first thinking
+- understanding of container boundaries
+- declarative configuration mindset
+- focus on reproducibility and auditability
+
+It is intentionally minimal — clarity is the feature.
