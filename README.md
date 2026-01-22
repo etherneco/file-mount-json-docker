@@ -1,43 +1,47 @@
-## Architecture Overview
-- **JSON configuration** – declarative definition of mount rules
-- **Docker container** – isolated and reproducible runtime
-- **Entrypoint logic** – validates and applies mounts
-- **Explicit host ↔ container boundary** – no hidden behaviour
+# File Mount JSON Docker
 
-The goal is not to abstract Docker away, but to make mount behaviour transparent and inspectable.
+Minimal, recruitment-ready project that shows a clear, reproducible way to
+apply Docker mounts from a JSON definition. The focus is on transparency:
+the JSON config is the source of truth, and the container boundary is explicit.
 
----
-
-## Use Cases
-- CI/CD pipelines requiring reproducible file mounts
-- Multi-environment deployments (local, staging, production)
-- Infrastructure documentation and audits
-- Controlled exposure of host files inside containers
-
----
+## Key Features
+- Declarative JSON config for mount rules
+- Dockerized, reproducible runtime
+- Entrypoint logic that validates and applies mounts
+- Clear host/container boundary with no hidden behavior
 
 ## Tech Stack
 - Docker
 - JSON configuration
-- Shell-based entrypoint logic
+- Shell entrypoint logic
 
----
+## Requirements
+- Docker Desktop or Docker Engine
+- docker-compose (if using compose)
 
-## Design Principles
-- **Declarative over imperative**
-- **Clarity over abstraction**
-- **Single responsibility**
-- **No hidden magic**
-- **Portable by default**
+## Quick Start
+1) Build the image:
+   - `docker-compose build`
+2) Run:
+   - `docker-compose up`
 
----
+## Project Structure
+- `dockerfiles/php` - PHP image definition
+- `etc/nginx` - Nginx vhost config
+- `etc/php` - PHP config
+- `src` - Application sources
+
+## Usage Notes
+- Configure mounts in JSON (see `src/config/config.php` for defaults).
+- The application is intentionally minimal to keep behavior inspectable.
+
+## Tests
+- Example PHPUnit test: `src/tests/phpunit/exampletest.php`
 
 ## Status
 - Functional prototype
-- Used as an internal infrastructure utility
+- Built as an internal infrastructure utility
 - Designed with extensibility in mind
-
----
 
 ## Possible Extensions
 - JSON Schema validation
@@ -45,13 +49,7 @@ The goal is not to abstract Docker away, but to make mount behaviour transparent
 - CI/CD pipeline integration
 - Runtime verification and logging
 
----
-
-## Why This Project Matters
-This repository demonstrates:
-- infrastructure-first thinking
-- understanding of container boundaries
-- declarative configuration mindset
-- focus on reproducibility and auditability
-
-It is intentionally minimal — clarity is the feature.
+## Why This Project Fits Recruitment
+- Shows infrastructure-first thinking and Docker literacy
+- Emphasizes clarity, reproducibility, and auditability
+- Keeps scope small while demonstrating clean boundaries
